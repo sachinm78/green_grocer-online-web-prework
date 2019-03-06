@@ -29,7 +29,12 @@ end
 
 
 def apply_clearance(cart)
-  # code here
+ cart.each do |fruit_name,fruit_hash|
+   if fruit_hash[:clearance] == true
+     fruit_hash[:price] = (fruit_hash[:price]*0.8).round(2)
+   end
+ end
+ return cart
 end
 
 
