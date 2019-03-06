@@ -1,8 +1,14 @@
-def consolidate_cart(item)
-  final = Hash.new 0 
-  count = :count
-    item.each do |hash|
-    hash.each do |food, description|
+def consolidate_cart(cart)
+  organized_cart = {}
+  cart.each do |element|
+    element.each do |food, hash|
+      organized_cart[food] ||= hash
+      organized_cart[food][:count] ||= 0
+      organized_cart[food][:count] += 1
+    end
+  end
+  return organized_cart
+end
 
 def apply_coupons(cart, coupons)
   # code here
