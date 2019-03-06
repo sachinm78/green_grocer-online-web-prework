@@ -1,5 +1,6 @@
 def consolidate_cart(cart)
   organized_cart = {}
+  count = 0
   cart.each do |element|
     element.each do |food, hash|
       organized_cart[food] ||= hash
@@ -29,14 +30,13 @@ end
 
 
 def apply_clearance(cart)
- cart.each do |fruit_name,fruit_hash|
-   if fruit_hash[:clearance] == true
-     fruit_hash[:price] = (fruit_hash[:price]*0.8).round(2)
+ cart.each do |food_name,food_hash|
+   if food_hash[:clearance] == true
+     food_hash[:price] = (food_hash[:price]*0.8).round(2)
    end
  end
  return cart
 end
-
 
 def checkout(cart, coupons)
   consolidated_cart = consolidate_cart(cart)
